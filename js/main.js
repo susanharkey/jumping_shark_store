@@ -1,8 +1,11 @@
 $(document).ready(function(){
-
+  $.getJSON( "./items.json", function(json) {
   // get the items out of the json file
     // add the items from the json file to the DOM using the template in index.html
-
+  	for (var i in json){
+  		$('.items').append('<div class="list-item"><div class="list-item-image"><img src="/img/' + json[i].image + '" alt=""></div><div class="list-item-header"><span class="list-item-name">' + json[i].name + '</span><span class="list-item-price">' + json[i].price + '</span></div><div class="list-item-add"><a href="#" class="button">Add to cart</a></div></div>');
+  	}
+  });
   // create a function for updating the cart total located at the bottom of `#cart` based on the items currently in the cart
 
   // attach an event listener to all `.buttons` in the `.list-item`s to detect clicks
@@ -14,3 +17,5 @@ $(document).ready(function(){
     // run the function you created to update the total
 
 });
+
+
